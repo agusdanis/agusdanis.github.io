@@ -1,62 +1,388 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" >
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" >
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+  <title>YG1BSH - Index</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
 
-    <!-- <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script> -->
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Logis
+  * Updated: Aug 30 2023 with Bootstrap v5.3.1
+  * Template URL: https://bootstrapmade.com/logis-bootstrap-logistics-website-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+
+  <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+  <script>
+    
+    $(function() {
+        // $("#includeHeader").load("header.html");
+       $("#includeFooter").load("footer.html");
+    });
+ </script>
 </head>
+
 <body>
-    <h1>YG1BSH QSL CARD</h1>
-    <!-- <input id="inputfile" type="file" accept=".cbr, .json, .adi">
-    <div id="adif_parse"></div>
+
+  <!-- <div w3-include-html="header.html"></div> -->
+
+  <!-- ======= Header ======= -->
+  <!-- <div id="includeHeader"></div> -->
+  
+<header id="header" class="header d-flex align-items-center fixed-top">
+  <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+    <a href="index.html" class="logo d-flex align-items-center">
+      <!-- Uncomment the line below if you also wish to use an image logo -->
+      <img src="assets/img/logo.png" alt="">
+      <h1>YG1BSH</h1>
+    </a>
+
+    <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+    <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+    
+    <!-- <nav id="navbar" class="navbar">
+      <ul>
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+          <ul>
+            <li><a href="#">Drop Down 1</a></li>
+            <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+              <ul>
+                <li><a href="#">Deep Drop Down 1</a></li>
+                <li><a href="#">Deep Drop Down 2</a></li>
+                <li><a href="#">Deep Drop Down 3</a></li>
+                <li><a href="#">Deep Drop Down 4</a></li>
+                <li><a href="#">Deep Drop Down 5</a></li>
+              </ul>
+            </li>
+            <li><a href="#">Drop Down 2</a></li>
+            <li><a href="#">Drop Down 3</a></li>
+            <li><a href="#">Drop Down 4</a></li>
+          </ul>
+        </li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a class="get-a-quote" href="get-a-quote.html">Get a Quote</a></li>
+      </ul>
+    </nav> -->
+    <!-- .navbar -->
+
+  </div>
+</header><!-- End Header -->
+<!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="hero d-flex align-items-center">
+    <div class="container">
+      <div class="row gy-4 d-flex justify-content-between">
+        <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
+          <h2 data-aos="fade-up">Find Your QSL</h2>
+          <p data-aos="fade-up" data-aos-delay="100">Nice to QSO with you</p>
+
+          <form action="" class="form-search d-flex align-items-stretch mb-3" data-aos="fade-up" data-aos-delay="200">
+            <input type="text" class="form-control" style="text-transform: uppercase; font-size: 36px; font-weight: bold; color: blue" id="callsign" name="callsign" placeholder="your callsign">
+            <button type="button" class="btn btn-primary" id="btnSearch">Search</button>
+          </form>
+
+          <div class="row gy-4" data-aos="fade-up" data-aos-delay="400">
+
+            <div class="col-lg-3 col-6">
+              <div class="stats-item text-center w-100 h-100">
+                <!-- <span data-purecounter-start="0" data-purecounter-end="165" id="dataDXCC" data-purecounter-duration="1" class="purecounter"></span> -->
+                <span id="dataDXCC"></span>
+                <p>DXCC</p>
+              </div>
+            </div><!-- End Stats Item -->
+
+            <div class="col-lg-3 col-6">
+              <div class="stats-item text-center w-100 h-100">
+                <!-- <span data-purecounter-start="0" data-purecounter-end="3202" data-purecounter-duration="1" class="purecounter"></span> -->
+                <span id="dataQSO"></span>
+                <p>QSO</p>
+              </div>
+            </div><!-- End Stats Item -->
+
+            <div class="col-lg-3 col-6">
+              <div class="stats-item text-center w-100 h-100">
+                <!-- <span data-purecounter-start="0" data-purecounter-end="2950" data-purecounter-duration="1" class="purecounter"></span> -->
+                <span id="dataCallsign"></span>
+                <p>Confirmed</p>
+              </div>
+            </div><!-- End Stats Item -->
+
+            <!-- <div class="col-lg-2 col-6">
+              <div class="stats-item text-center w-100 h-100">
+                <span id="dataMode"></span>
+                <p>Mode</p>
+              </div>
+            </div>
+
+            <div class="col-lg-2 col-6">
+              <div class="stats-item text-center w-100 h-100">
+                <span id="dataBand"></span>
+                <p>Band</p>
+              </div>
+            </div> -->
+
+          </div>
+        </div>
+
+        <div class="col-lg-5 order-1 order-lg-2 hero-img" data-aos="zoom-out">
+          <img src="assets/img/hero-img.svg" class="img-fluid mb-3 mb-lg-0" alt="">
+        </div>
+
+      </div>
+    </div>
+  </section><!-- End Hero Section -->
+
+  <main id="main">
 
     
-    <textarea name="output" id="output" cols="30" rows="5"></textarea>
-    <button id="btnSaveFile">Save to file</button> -->
 
-    <input type="text" id="inputCallsign" style="text-transform: uppercase">
-    <button id="btnPostCallsign">Find</button>
+    
+    <!-- ======= Horizontal Pricing Section ======= -->
+    <section id="horizontal-pricing" class="horizontal-pricing pt-0">
+        <div class="container" data-aos="fade-up">
+  
+          <div class="section-header">
+            <span id="qsodataspan">QSO Data</span>
+            <h2 id="qsodatahead">QSO Data</h2>
+          </div>
+  
+          <div id="qsoDetail"></div>
+          
+  
+        </div>
+      </section><!-- End Horizontal Pricing Section -->
 
-    <div id="hasilqso">
-    <table id="tabelAdif" class="table table-striped" style="width:100%"></table>
+
+    <!-- ======= QSO Section ======= -->
+    <!-- <section id="qso" class="pricing pt-0">
+        <div class="container" data-aos="fade-up">
+  
+          <div class="section-header">
+            <span>Logger</span>
+            <h2>Logger</h2>
+  
+          </div>
+  
+          <div class="row gy-4">
+  
+            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+              <div class="pricing-item">
+                <iframe align="top" frameborder="0" height="650" scrolling="yes" src="https://logbook.qrz.com/lbstat/YG1BSH/" width="100%"></iframe>
+
+                <a href="https://www.qrz.com/db/yg1bsh" class="buy-btn" target="_blank">To qrz.com page</a>
+              </div>
+            </div>
+  
+            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+              <div class="pricing-item featured">
+                <iframe height="650" scrolling="auto" src="https://www.hrdlog.net/hrdlogframe.aspx?user=YG1BSH&amp;lastqso=20&amp;qsomap=&amp;options=search;disablelinks;" width="100%"></iframe>
+                <a href="#" class="buy-btn">To hrdlog.net page</a>
+              </div>
+            </div>
+          </div>
+  
+        </div>
+    </section> -->
+
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <!-- <div id="includeFooter"></div> -->
+
+  <!-- ======= Footer ======= -->
+<footer id="footer" class="footer">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-5 col-md-12 footer-info">
+          <a href="index.html" class="logo d-flex align-items-center">
+            <span>YG1BSH</span>
+          </a>
+          <p>Indonesian Amateur Radio.</p>
+          <div class="social-links d-flex mt-4">
+            <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+            <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+
+        <!-- <div class="col-lg-2 col-6 footer-links">
+          <h4>Useful Links</h4>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About me</a></li>
+            <li><a href="#">QRZ.COM</a></li>
+            <li><a href="#">LOTW</a></li>
+            <li><a href="#">Privacy policy</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-6 footer-links">
+          <h4>Our Services</h4>
+          <ul>
+            <li><a href="#">Web Design</a></li>
+            <li><a href="#">Web Development</a></li>
+            <li><a href="#">Product Management</a></li>
+            <li><a href="#">Marketing</a></li>
+            <li><a href="#">Graphic Design</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
+          <h4>Contact Us</h4>
+          <p>
+            A108 Adam Street <br>
+            New York, NY 535022<br>
+            United States <br><br>
+            <strong>Phone:</strong> +1 5589 55488 55<br>
+            <strong>Email:</strong> info@example.com<br>
+          </p>
+
+        </div> -->
+
+      </div>
     </div>
-    <footer>by YG1BSH</footer>
 
-    <script type="text/javascript">
-        // const fs = require('fs');
-        // fs.readFile('8B24D.adi', (err, inputD) => {
-        // if (err) throw err;
-        //     console.log(inputD.toString());
-        // })
+    <div class="container mt-4">
+      <div class="copyright">
+        &copy; Copyright <strong><span>Logis</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      </div>
+    </div>
+</footer>
+  <!-- End Footer -->
 
-        let a = 0;
-        let posCursor = 0; 
-        let $dataAdif = [];
-        let judulKolom = [];
-        let btnPostCallsign = document.getElementById('btnPostCallsign');
+  
+  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-        // let tableHeaderName = ['CALL','GRIDSQUARE','MODE','RST_SENT','RST_RCVD','QSO_DATE','TIM']
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+
+  <script type="text/javascript">
+    const params = new URLSearchParams(document.location.search);
+    let callsign = params.get("callsign");
+
+    console.log('entered callsign: ', callsign);
+
+    const apiUrl = 'https://script.google.com/macros/s/AKfycbyxUxxHgtewhRCksmnclNAk98bKF90EnBNLMbthpFm3ezi-BtFrRq5iBNevSUrRmXKO/exec';
+    const btnSearch = document.getElementById('btnSearch');
+    let judulKolom = [];
+    let qsoData = [];
+    let summaryData = {};
+    let dxcc = document.querySelector('#dataDXCC');
+    let qso = document.querySelector('#dataQSO');
+    let call = document.querySelector('#dataCallsign');
+    // let mode = document.querySelector('#dataMode');
+    // let band = document.querySelector('#dataBand');
+    
+    // console.log('dxcc: ', dxcc.dataset.purecounterEnd);
+    // dxcc.dataset.purecounterEnd = '200';
+    // let xdxcc = '300';
+    
+
+    // const o = params.get("o");
+    // console.info(s); //show C
+    // console.log('callsign: ', callsign);
+
+    // getQSOData('JR2IGV');
+    callsign != null ? getQSOData(callsign) : '' ;
+
+    btnSearch.addEventListener('click', function(){
+        callsign = document.getElementById('callsign').value.toUpperCase();
+        console.log('callsign: ', callsign);
         
-        // let adiFile = 'LOGLIST.adi';
-        // const btnSave = document.getElementById('btnSaveFile');
-        // btnSave.style.visibility = "hidden";
+        getQSOData(callsign);
+    })
 
-        let qsoData; 
-        
-        document.getElementById('hasilqso').style.display = "none";
+    getSummaryData();
+    function getSummaryData() {
+            // const apiUrl    = 'https://script.google.com/macros/s/AKfycbwY0umafNVZqRd9Py5dgJbxp20-V7DP9QMj5jd3-zffU8x9fvsZIEpbuMZCscGhQcXz/exec';
+            const action    = '?action=read';
+            const callsign  = '&callsign=summary'; 
+            $.ajax({
+              url : apiUrl+action+callsign,
+              
+              method : "GET",
+              success: function(data){
+                summaryData = JSON.parse(JSON.stringify(data.records[0]));
+                console.log(summaryData);
+                // document.getElementById("dataDXCC").textContent = summaryData.DXCC;
+                dxcc.textContent  = summaryData.DXCC;
+                call.textContent  = summaryData.CALLSIGN;
+                qso.textContent  = summaryData.QSO;
+                // mode.textContent  = summaryData.MODE;
+                // band.textContent  = summaryData.BAND;
+                if (summaryData.length > 0) {
+                    // $('#dataDXCC').innerHTML = summaryData.DXCC;
+                    // document.getElementById("dataDXCC").textContent = summaryData.DXCC;
+                    // document.getElementById("dataDXCC").text = summaryData.DXCC;
+                    // dxcc.dataset.purecounterEnd = summaryData.DXCC;
+                    // 
+                    // judulKolom = setJudulKolom(qsoData);
+                    // console.log('judulKolom: ', judulKolom);
+                    // showAdifData(qsoData, judulKolom);
+                    // showSummaryData(qsoData);
+                }
+              },
+              error : function(request, status, error) {
+                console.log(error);
+              }
+            });
+        }
 
-        // getQSOData('JR2IGV');  // 1
-        
-        function getQSOData(call) {
-            const apiUrl    = 'https://script.google.com/macros/s/AKfycbwY0umafNVZqRd9Py5dgJbxp20-V7DP9QMj5jd3-zffU8x9fvsZIEpbuMZCscGhQcXz/exec';
+    // getQSOData(callsign)
+    function getQSOData(call) {
+            // const apiUrl    = 'https://script.google.com/macros/s/AKfycbwY0umafNVZqRd9Py5dgJbxp20-V7DP9QMj5jd3-zffU8x9fvsZIEpbuMZCscGhQcXz/exec';
             const action    = '?action=read';
             const callsign  = '&callsign='+call; 
+            document.querySelector('#qsodataspan').textContent = call + ' QSO DATA';
+            document.querySelector('#qsodatahead').textContent = call + ' QSO DATA';
             $.ajax({
               url : apiUrl+action+callsign,
               
@@ -73,7 +399,10 @@
                 if (qsoData.length > 0) {
                     judulKolom = setJudulKolom(qsoData);
                     // console.log('judulKolom: ', judulKolom);
-                    showAdifData(qsoData, judulKolom);
+                    // showAdifData(qsoData, judulKolom);
+                    document.querySelector('#qsodataspan').textContent = call + ' QSO DATA (' + qsoData.length + ')';
+                    document.querySelector('#qsodatahead').textContent = call + ' QSO DATA (' + qsoData.length + ')';
+                    showQSODetail(qsoData);
                 }
               },
               error : function(request, status, error) {
@@ -84,8 +413,8 @@
 
         setJudulKolom = (data) => {
             let judul = [];
-            console.log(data.length);
-            console.log(Object.keys(data)); 
+            // console.log(data.length);
+            // console.log(Object.keys(data)); 
 
             for (let x=0; x < data.length; x++) {
                 let temp = Object.keys(data[x]);
@@ -97,289 +426,83 @@
             return judul;
         }
 
-        /*
-        document.getElementById('inputfile')
-                .addEventListener('change', function() {
-                    
-                judulKolom = [];
-                let textInput = '';
-                let isEoh = 0;
-                let isContent = 0;
-                let pos = 0;
-                var fr=new FileReader();
-                fr.onload=function(){
-                    textInput = fr.result;
-                    document.getElementById('output')
-                            .textContent=textInput;
-                    isEoh = textInput.toUpperCase().search("EOH");
-                    isEoh > 0 ? isEoh += 1 : "";
-                    isEoh < textInput.length ? isContent = 1 : "";
-                    isContent == 1 ? pos = isEoh : "";
-                    console.log(isEoh+' '+isContent);            
-                    parseInputFile(textInput, pos);
-                }
-                
-                fr.readAsText(this.files[0]);
-                // parseInputFile(textInput);
-        })
-
-        btnSave.addEventListener('click', function(){
-            // alert('button save klik');
-            let jsonData = JSON.stringify(populateFromArray($dataAdif));
-            writeJSONFile(jsonData, 'adif.json');
-        })
-        */
-
-
-        btnPostCallsign.addEventListener('click', function(){
-            // alert('button save klik');
-            // let jsonData = JSON.stringify(populateFromArray($dataAdif));
-            // writeJSONFile(jsonData, 'adif.json');
-            // let t = document.getElementById('inputCallsign').value.toUpperCase();
-            // document.getElementById('tabelAdif').innerHtml = '';
-            // let table = $('#tabelAdif').DataTable();
-            // table.destroy();
-            $(`#tabelAdif tbody`).empty();
-            document.getElementById('hasilqso').style.display = "none";
-            let callsign = document.getElementById('inputCallsign').value.toUpperCase();
-            console.log('Finding callsign: ', callsign); 
-            if (callsign.length > 3) {
-                
-                getQSOData(callsign);
-            } else {
-                console.log('callsign is not valid !');
-                // document.getElementById('tabelAdif').innerHtml = '';
-            }
-        })
-
-
-
-        populateFromArray = (array) => {
-            var output = {};
-            array.forEach(function(item, index) {
-                if (!item) return;
-                if (Array.isArray(item)) {
-                output[index] = populateFromArray(item);
-                } else {
-                output[index] = item;
-                }
-            });
-            return output;
-        }
-
-        parseInputFile = (textValid, pos) => {
-            // let record = [];
-            // console.log('posCursur awal: ' + pos);
-            // getRecord(textValid, pos);
-            posCursor = pos;
-            let i = 0;
-            console.log('posCursur awal: ' + posCursor);
-            while (posCursor+7 < textValid.length) {
-                $dataAdif[i] = getRecord(textValid, posCursor); // tampung dalam variabel sebagai record
-                // $dataAdif_obj.push(getRecord(textValid, posCursor));
-                // console.log(getRecord(textValid, posCursor));
-                // console.log('posCursor akhir: ' + posCursor + ' / ' + textValid.length);
-                i++;
-            }
-            // let jsonData = $dataAdif;
-            
-            // console.log('dataAdif: ', JSON.stringify(populateFromArray($dataAdif)));
-
-            // console.log('judul: ', judulKolom);
-            btnSave.style.visibility = "visible";
-
-            // writeJSONFile(jsonData, 'adif.json');
-            showAdifData($dataAdif, judulKolom);
-
-            // console.log(getRecord(textValid, posCursor));
-            // console.log(getRecord(textValid, posCursor));
-            // console.log(getRecord(textValid, posCursor));
-            // console.log('posCursor akhir: ' + posCursor + ' / ' + textValid.length);
-        }
-
-        writeJSONFile = (text, fileName) => {
-            let textFile = null;
-            
-            const makeTextFile = (text) => {
-                const data = new Blob([text], {
-                type: 'text/plain',
-                });
-                if (textFile !== null) {
-                    window.URL.revokeObjectURL(textFile);
-                }
-                textFile = window.URL.createObjectURL(data);
-                return textFile;
-            };
-            const link = document.createElement('a');
-            link.setAttribute('download', fileName);
-            link.href = makeTextFile(text);
-            link.click();
-        }
-
-        // get rodData
-        getRecord = (textValid, pos) => {
-            if (pos+5 > textValid.length) {
-                return [];
-            }
-
-            const end = textValid.toUpperCase().indexOf("EOR", pos+5);
-            posCursor = end;
-            // console.log('posCursor = ' + pos+'/'+posCursor);
-            if (end < 0) {
-                return [];
-            } else {
-                const record = textValid.substring(pos+5, end-1);
-                let rowData = recordToArray(record); 
-                // console.log('rowData: ', JSON.stringify(rowData));
-                return rowData;
-            }
-        }
-
-        recordToArray = (record) => {
-            
-            let kolom = {};
-            for(let a = 0; a < record.length; a++)
-		    {
-                if(record[a] == '<') //find the start of the tag
-			    {   
-                    
-                    let tag_name = "";
-                    let value = "";
-                    let len_str = "";
-                    let len = 0;
-                    a++; //go past the <
-
-                    while(record[a] != ':') //get the tag
-                    {
-                        tag_name = tag_name.concat(record[a]); //append this char to the tag name
-                        a++;
-                    };
-
-                    if (!judulKolom.includes(tag_name)) {
-                        judulKolom.push(tag_name);
-                        // console.log('tag_name: ', judulKolom);
-                    }
-
-                    a++; //iterate past the colon
-                    while((record[a] != '>') && (record[a] != ':'))
-                    {
-                        len_str = len_str.concat(record[a]);
-                        a++;
-                        
-                    };
-                    // console.log('len_str: ' + len_str);
-
-
-                    if(record[a] == ':')
-                    {
-                        while(record[a] != '>')
-                        {
-                            a++;
-                        };
-                    };
-
-                    a++; //iterate over the >
-                    len = parseInt(len_str);
-                    // console.log('len: ' + len);
-                    while(len > 0)
-                    {
-                        value = value.concat(record[a]);
-                        len--;
-                        a++;
-                    };
-                    kolom[tag_name] = value;
-                    // console.log(kolom);
-                }
-                
-            }
-
-            return kolom;
-        }
-
-        addHeaderTable = (judul) => {
-            let html ='<thead>' + '<tr>';
-            for (let i=0; i<=judul.length; i++) {
-                html += '<th></th>';
-            }                        
-            html += '</tr>' + '</thead>' ;
-            $('#tabelAdif').html(html);
-        }
-
-        showAdifData = (dataAdif, judul) => {
-            document.getElementById('hasilqso').style.display = "block";
-            $(`#tabelAdif tbody`).empty();
-            addHeaderTable(judul);
-            let columnData = new Array();
-            for (let i=0; i<judul.length; i++) {
-                columnData.push({title: judul[i], data: judul[i], defaultContent: ''});
-            }
-            // console.log('column: ', columnData);
-            // dataAdif = JSON.stringify(dataAdif);
-            // dataAdif = JSON.parse(dataAdif);
-            // console.log('dataAdif: ', dataAdif);
-
-            // let dataTable = Object.entries(dataAdif); //Object.keys(dataAdif).map((key) => [key, dataAdif[key]]);
-            // console.log('dataTabel: ', dataTable);
-
-            let table = $('#tabelAdif').DataTable();
-            table.destroy();
-            table = $('#tabelAdif').DataTable({
-            dom: 'Bfrti',
-                    lengthMenu: [
-                        [ 10, 25, 50, -1 ],
-                        [ '10 rows', '25 rows', '50 rows', 'Show all' ]
-                    ],
-                    buttons: [
-                        'pageLength', //'copy', 'csv', 'excel', 'pdf', 'print',
-                    ],
-                    pageLength  : 1000,
-                    processing: true,
-                    // serverSide: true,
-                    data: dataAdif,
-                    
-
-                    columns: columnData,
-
-                        // { "title": "BAND", "data": "BAND", "defaultContent": ""},
-                        // { "title": "CALL", "data": "CALL", "defaultContent": ""},
-                        // { "title": "GRIDSQUARE", "data": "GRIDSQUARE", "defaultContent": ""},
-                        // { "title": "FREQ", "data": "FREQ", "defaultContent": ""},
-                        // { "title": "MODE", "data": "MODE", "defaultContent": ""},
-                        // { "title": "MY_GRIDSQUARE", "data": "MY_GRIDSQUARE", "defaultContent": ""},
-                        // { "title": "QSO_DATE", "data": "QSO_DATE", "defaultContent": ""},
-                        // { "title": "QSO_DATE_OFF", "data": "QSO_DATE_OFF", "defaultContent": ""},
-                        // { "title": "RST_RCVD", "data": "RST_RCVD", "defaultContent": ""},
-                        // { "title": "RST_SENT", "data": "RST_SENT"},
-                        // { "title": "STATION_CALLSIGN", "data": "STATION_CALLSIGN", "defaultContent": ""},
-                        // { "title": "TIME_OFF", "data": "TIME_OFF", "defaultContent": ""},
-                        // { "title": "TIME_ON", "data": "TIME_ON", "defaultContent": ""},
-                        
-                        // { "data": "nomor",
-                        //     render: function(data, type, row) {
-                        //         return "<strong>"+row.nomor+"</strong>";
-                        //     }
-                        // },
-                        // { "data": "TDOH_TANGGAL"},
-                        // { "data": "GUDANG_ASAL"},
-                        // { "data": "GUDANG_TUJUAN"},
-                        // { "data": null, className: "text-right", "title": "created_by",  
-                        //         render: function(data, type, row) {
-                        //             let html = '';
-                        //             html += 
-                        //             '<span class="badge badge-warning" style="text-align: left">' + data['TDOH_MUSR_USERNAME'] + '</span> ';
-                        //             return html;
-                        //         },
-                        // },
-                    // ],
-                    // order: [[0, 'desc']],
-                    // paging: true,
-                    // searching: true,
-                    // fixedHeader: true,
-            });
-        }
-
         
-        
-    </script>
+
+        function showQSODetail(data) {
+            // console.log('qsoData.length: ', qsoData.length);
+            // console.log('qsoData: ', data);
+            let delay = 100;
+            let html = '';
+            let featured, mt_4, warna_text ;
+            for (let i=0; i<data.length; i++) {
+                let thn = data[i].QSO_DATE.toString().substring(0,4);
+                let bln = getMonthName(data[i].QSO_DATE.toString().substring(4,6));
+                let tgl = data[i].QSO_DATE.toString().substring(6,8);
+
+                let jam = data[i].TIME_ON.toString().substring(0,2);
+                let mnt = data[i].TIME_ON.toString().substring(4,6);
+                // let rst = data[i].RST_SENT.toFixed(3);
+                let freq = data[i].FREQ.toFixed(3);
+
+                // console.log(tgl,'-',bln,'-', thn);
+                // console.log('oke ..');
+                mt_4 = (i == 0) ? '' : 'mt-4';
+                featured    = (i % 2 == 0) ? '' : 'featured';
+                warna_text  = (i % 2 == 0) ? 'black' : 'white';
+                html += 
+                    `<div class="row gy-4 pricing-item ${featured} ${mt_4}" data-aos="fade-up" data-aos-delay="${delay}">`+
+                        '<div class="col-lg-9 d-flex align-items-center justify-content-center">'+
+                            `<table width="100%" style="color: ${warna_text};">`+
+                                '<thead style="text-align: center; ">'+
+                                    `<th>DATE</th>`+
+                                    '<th>TIME (UTC)</th>'+
+                                    '<th>MODE</th>'+
+                                    '<th>BAND</th>'+
+                                    '<th>FREQ</th>'+
+                                    '<th>RST</th>'+
+                                    // '<th>RCV</th>'+
+                                '</thead>'+
+                                '<tbody style="text-align: center">'+
+                                    `<td>${tgl} ${bln} ${thn}</td>`+
+                                    `<td>${jam}:${mnt}</td>`+
+                                    `<td>${data[i].MODE}</td>`+
+                                    `<td>${data[i].BAND}</td>`+
+                                    `<td>${freq}</td>`+
+                                    `<td>${data[i].RST_SENT}</td>`+
+                                    // '<td>-11</td>'+
+                                '</tbody>'+
+                            '</table>'+
+                        '</div>'+
+                        '<div class="col-lg-3 d-flex align-items-center justify-content-center">'+
+                            // '<div class="text-center"><a href="#" class="buy-btn">QSL Card</a></div>'+
+                            '<button type="button" class="btn buy-btn text-center">QSL Card</button>'+
+                        '</div>'+
+                    '</div>';
+                delay += 100;
+            }
+            document.getElementById('qsoDetail').innerHTML = html;
+        }
+
+        function getMonthName(monthNumber) {
+        const date = new Date();
+        date.setMonth(monthNumber - 1);
+
+        return date.toLocaleString('en-US', {
+            month: 'short',
+        });
+        }
+
+        console.log(getMonthName(1)); // 👉️ "January"
+
+        $(document).ready(function() {
+            // showQSODetail();
+            // console.log('qsoData.length: ', qsoData.length);
+            // console.log('qsoData: ', qsoData);
+
+            
+        })
+  </script>
+
 </body>
+
 </html>
