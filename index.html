@@ -38,6 +38,7 @@
   ======================================================== -->
 
   <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+  
 
   <script>
     
@@ -303,6 +304,7 @@
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.js"></script>
 
   <script type="text/javascript">
     const params = new URLSearchParams(document.location.search);
@@ -332,6 +334,12 @@
 
     // getQSOData('JR2IGV');
     callsign != null ? getQSOData(callsign) : '' ;
+
+    window.jsPDF = window.jspdf.jsPDF;
+    
+	
+    
+
 
     btnSearch.addEventListener('click', function(){
         callsign = document.getElementById('callsign').value.toUpperCase();
@@ -475,7 +483,7 @@
                         '</div>'+
                         '<div class="col-lg-3 d-flex align-items-center justify-content-center">'+
                             // '<div class="text-center"><a href="#" class="buy-btn">QSL Card</a></div>'+
-                            '<button type="button" class="btn buy-btn text-center">QSL Card</button>'+
+                            `<button type="button" data-id="${data[i].ROW_ID}" onclick="downloadQSL(this)" class="btn buy-btn text-center">QSL Card</button>`+
                         '</div>'+
                     '</div>';
                 delay += 100;
@@ -483,13 +491,120 @@
             document.getElementById('qsoDetail').innerHTML = html;
         }
 
-        function getMonthName(monthNumber) {
-        const date = new Date();
-        date.setMonth(monthNumber - 1);
+        downloadQSL = (e) => {
+          let row_id = $(e).attr('data-id');
+          const data = qsoData.filter(d => d.ROW_ID === row_id)[0] ;
+          console.log('donwload request: ', row_id, ':', data);
+          // const urlPDF = "https://docs.google.com/presentation/d/1xugcSzl5oiHD4Ih9FUKH9J2duDINGw3jPB8q1NnybHc/export?format=pdf&portrait=false&size=b5&gridlines=false&slide=id.p1";
+          // window.location = urlPDF;
+          // window.open(urlPDF);
+          generatePDFQSLCard(data);
+          // Convert_HTML_To_PDF();
+          
+        }
 
-        return date.toLocaleString('en-US', {
-            month: 'short',
-        });
+        generatePDFQSLCard = (data) => {
+          
+          let thn = data.QSO_DATE.toString().substring(0,4);
+          let bln = getMonthName(data.QSO_DATE.toString().substring(4,6));
+          let tgl = data.QSO_DATE.toString().substring(6,8);
+          let tanggal = tgl+' '+bln+' '+thn;
+
+          let jam   = data.TIME_ON.toString().substring(0,2);
+          let mnt   = data.TIME_ON.toString().substring(4,6);
+          let waktu = jam+':'+mnt;
+          let freq  = data.FREQ.toFixed(3);
+          let band  = data.BAND;
+          let mode  = data.MODE;
+          let rst   = (data.RST_SENT).toString();
+
+          var fileName = 'qslcard.pdf';
+          var brsCallsign = 80;
+          var brsQSOData  = 116;
+
+          var doc = new jsPDF(
+            {
+              orientation: 'l',
+              unit: 'mm',
+              format: 'a5',
+              putOnlyUsedFonts:true
+            }
+          );
+          const myimage = "assets/img/QSLCard Template-1.png";
+          // const myimage = "https://drive.google.com/file/d/1EAxABicHo5y5kQhl23twlnDOqq5TjzVO/view?usp=sharing";
+          
+          // doc.internal.events.subscribe('addPage', function() { 
+          //   pageSize = view.doc.internal.pageSize; 
+            
+          // });
+
+          var pageSize = doc.internal.pageSize; 
+
+          // doc.setFont("libre", "bold");
+          // doc.text(20, 20, 'Hello world!');
+          // doc.text(20, 30, 'This is client-side Javascript to generate a PDF.');
+          // doc.addImage(myimage, "JPEG", 0, 0, 180, 180);
+
+          // Add new page
+          // doc.addPage();
+          // doc.text(20, 20, 'Visit CodexWorld.com');
+
+          doc.addImage(myimage, 'JPG', 0, 0, pageSize.width, pageSize.height); 
+          
+          doc.setFont("Libre Franklin", "bold");
+          // pdf.setFont("helvetica");
+          // pdf.setFontType("bold");
+          doc.setTextColor('red');
+          doc.setFontSize(48);
+          doc.text(data.CALL, pageSize.width/2, 80, 'center');
+
+          doc.setTextColor('blue');
+          doc.setFont("Libre Franklin Bold", "bold");
+          doc.setFontSize(14);
+          doc.text(tanggal, 31, brsQSOData, 'center');
+          doc.text(waktu, 66, brsQSOData, 'center');
+          doc.text(band, 103, brsQSOData, 'center');
+          doc.text(freq, 128, brsQSOData, 'center');
+          doc.text(mode, 156, brsQSOData, 'center');
+          doc.text(rst, 185, brsQSOData, 'center');
+
+          window.open(doc.output('bloburl', fileName));
+
+          // Save the PDF
+          // doc.save('document.pdf');
+          // doc.output('pdfjsnewwindow', 'document.pdf');
+          // window.open(doc.output('bloburl'));
+        }
+        
+
+        // Convert HTML content to PDF
+        function Convert_HTML_To_PDF() {
+            var doc = new jsPDF();
+          
+            // Source HTMLElement or a string containing HTML.
+            var elementHTML = document.querySelector("#contentToPrint");
+
+            doc.html(elementHTML, {
+                callback: function(doc) {
+                    // Save the PDF
+                    doc.save('document-html.pdf');
+                },
+                margin: [10, 10, 10, 10],
+                autoPaging: 'text',
+                x: 0,
+                y: 0,
+                width: 190, //target width in the PDF document
+                windowWidth: 675 //window width in CSS pixels
+            });
+        }
+
+        function getMonthName(monthNumber) {
+          const date = new Date();
+          date.setMonth(monthNumber - 1);
+
+          return date.toLocaleString('en-US', {
+              month: 'short',
+          });
         }
 
         console.log(getMonthName(1)); // 👉️ "January"
