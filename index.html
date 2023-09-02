@@ -310,7 +310,7 @@
     const params = new URLSearchParams(document.location.search);
     let callsign = params.get("callsign");
 
-    console.log('entered callsign: ', callsign);
+    // console.log('entered callsign: ', callsign);
 
     const apiUrl = 'https://script.google.com/macros/s/AKfycbyxUxxHgtewhRCksmnclNAk98bKF90EnBNLMbthpFm3ezi-BtFrRq5iBNevSUrRmXKO/exec';
     const btnSearch = document.getElementById('btnSearch');
@@ -343,9 +343,11 @@
 
     btnSearch.addEventListener('click', function(){
         callsign = document.getElementById('callsign').value.toUpperCase();
-        console.log('callsign: ', callsign);
-        
-        getQSOData(callsign);
+        document.getElementById('qsoDetail').innerHTML = '';
+        if (callsign != '' && callsign.length > 3) { 
+          // console.log('callsign: ', callsign);
+          getQSOData(callsign);
+        }
     })
 
     getSummaryData();
@@ -359,7 +361,7 @@
               method : "GET",
               success: function(data){
                 summaryData = JSON.parse(JSON.stringify(data.records[0]));
-                console.log(summaryData);
+                // console.log(summaryData);
                 // document.getElementById("dataDXCC").textContent = summaryData.DXCC;
                 dxcc.textContent  = summaryData.DXCC;
                 call.textContent  = summaryData.CALLSIGN;
@@ -494,7 +496,7 @@
         downloadQSL = (e) => {
           let row_id = $(e).attr('data-id');
           const data = qsoData.filter(d => d.ROW_ID === row_id)[0] ;
-          console.log('donwload request: ', row_id, ':', data);
+          // console.log('donwload request: ', row_id, ':', data);
           // const urlPDF = "https://docs.google.com/presentation/d/1xugcSzl5oiHD4Ih9FUKH9J2duDINGw3jPB8q1NnybHc/export?format=pdf&portrait=false&size=b5&gridlines=false&slide=id.p1";
           // window.location = urlPDF;
           // window.open(urlPDF);
@@ -607,7 +609,7 @@
           });
         }
 
-        console.log(getMonthName(1)); // 👉️ "January"
+        // console.log(getMonthName(1)); // 👉️ "January"
 
         $(document).ready(function() {
             // showQSODetail();
