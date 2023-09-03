@@ -177,8 +177,9 @@
           <div class="section-header">
             <span id="qsodataspan">QSO Data</span>
             <h2 id="qsodatahead">QSO Data</h2>
+            <h3 id="callsignData"></h3>
           </div>
-  
+          <!-- <div id="callsignData" class="pt-0"></div> -->
           <div id="qsoDetail"></div>
           
   
@@ -313,10 +314,11 @@
 
     // console.log('entered callsign: ', callsign);
 
-    const apiUrl = 'https://script.google.com/macros/s/AKfycbydBsI-fdJyhGmqNmcvHyCnLbpllfqz10vAOobhCc5PgeLMr6tmkFrDNjZIA6c-0J14/exec';
+    const apiUrl = 'https://script.google.com/macros/s/AKfycbwVv4n8IjQOcjlb4XztNRIhVwF2lbDtC0nKljOt3Cm5aRyZwZdgHk7laGL2HvETglhi/exec';
     const btnSearch = document.getElementById('btnSearch');
     let judulKolom = [];
     let qsoData = [];
+    let callsignData = [];
     let summaryData = {};
     let dxcc = document.querySelector('#dataDXCC');
     let qso = document.querySelector('#dataQSO');
@@ -334,15 +336,12 @@
     // console.log('callsign: ', callsign);
 
     // getQSOData('JR2IGV');
+    console.log('callsign: ', callsign);
     callsign != null ? getQSOData(callsign) : '' ;
 
     window.jsPDF = window.jspdf.jsPDF;
     
-	
-    
-
-
-    btnSearch.addEventListener('click', function(){
+	  btnSearch.addEventListener('click', function(){
         callsign = document.getElementById('callsign').value.toUpperCase();
         document.getElementById('qsoDetail').innerHTML = '';
         if (callsign != '' && callsign.length > 3) { 
@@ -353,7 +352,7 @@
 
     getSummaryData();
     function getSummaryData() {
-            // const apiUrl    = 'https://script.google.com/macros/s/AKfycbwY0umafNVZqRd9Py5dgJbxp20-V7DP9QMj5jd3-zffU8x9fvsZIEpbuMZCscGhQcXz/exec';
+            // const apiUrl    = 'https://script.google.com/macros/s/AKfycbyypbdXfKT34_tsl_cz5OyL5MQs4nvMH1kXXmFi8V0dyrYxPujIxqSIWt77wg3XQlXA/exec';
             const action    = '?action=read';
             const callsign  = '&callsign=summary'; 
             $.ajax({
@@ -361,6 +360,7 @@
               
               method : "GET",
               success: function(data){
+                // console.log(JSON.parse(JSON.stringify(data)));
                 summaryData = JSON.parse(JSON.stringify(data.records[0]));
                 // console.log(summaryData);
                 // document.getElementById("dataDXCC").textContent = summaryData.DXCC;
@@ -390,6 +390,7 @@
     // getQSOData(callsign)
     function getQSOData(call) {
             // const apiUrl    = 'https://script.google.com/macros/s/AKfycbwY0umafNVZqRd9Py5dgJbxp20-V7DP9QMj5jd3-zffU8x9fvsZIEpbuMZCscGhQcXz/exec';
+            document.getElementById('callsignData').innerHTML = '';
             const action    = '?action=read';
             const callsign  = '&callsign='+call; 
             document.querySelector('#qsodataspan').textContent = call + ' QSO DATA';
@@ -405,7 +406,9 @@
                 // },
               success: function(data){
                 //alert(data);
-                qsoData = JSON.parse(JSON.stringify(data.records));
+                // console.log('qsoData: ', data);
+                qsoData = JSON.parse(JSON.stringify(data.records[1]));
+                callsignData = JSON.parse(JSON.stringify(data.records[0][0]));
                 // console.log('qsoData: ', qsoData);
                 if (qsoData.length > 0) {
                     judulKolom = setJudulKolom(qsoData);
@@ -413,7 +416,7 @@
                     // showAdifData(qsoData, judulKolom);
                     document.querySelector('#qsodataspan').textContent = call + ' QSO DATA (' + qsoData.length + ')';
                     document.querySelector('#qsodatahead').textContent = call + ' QSO DATA (' + qsoData.length + ')';
-                    showQSODetail(qsoData);
+                    showQSODetail(qsoData, callsignData);
                 }
               },
               error : function(request, status, error) {
@@ -439,12 +442,18 @@
 
         
 
-        function showQSODetail(data) {
+        function showQSODetail(data, callsign) {
             // console.log('qsoData.length: ', qsoData.length);
-            // console.log('qsoData: ', data);
+            // console.log('dataCallsign: ', callsign);
             let delay = 100;
             let html = '';
             let featured, mt_4, warna_text ;
+            // html += `<p>${callsign[1]} ${callsign[2]} - ${callsign[3]}</p>`;
+            html += `${callsign[1]} ${callsign[2]} - ${callsign[3]}`;
+            
+            document.getElementById('callsignData').innerHTML = html;
+
+            html = '';
             for (let i=0; i<data.length; i++) {
                 let thn = data[i].QSO_DATE.toString().substring(0,4);
                 let bln = getMonthName(data[i].QSO_DATE.toString().substring(4,6));
@@ -554,9 +563,13 @@
 
           doc.addImage(myimage, 'JPG', 0, 0, pageSize.width, pageSize.height); 
           
-          doc.setFont("helvetica", "bold");
+          // console.log(doc.getFontList());
+
+          doc.setFont("Helvetica", "Bold");
+          // doc.setFontStyle("bold");
+          // doc.setFont("helvetica");
           // doc.setFontType("bold");
-          // pdf.setFont("helvetica");
+          // // pdf.setFont("helvetica");
           // pdf.setFontType("bold");
           doc.setTextColor('red');
           doc.setFontSize(48);
