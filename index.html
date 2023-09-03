@@ -16,7 +16,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@700;900&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -65,8 +65,8 @@
       <h1>YG1BSH</h1>
     </a>
 
-    <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
-    <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+    <!-- <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+    <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i> -->
     
     <!-- <nav id="navbar" class="navbar">
       <ul>
@@ -109,9 +109,9 @@
           <h2 data-aos="fade-up">Find Your QSL</h2>
           <p data-aos="fade-up" data-aos-delay="100">Nice to QSO with you</p>
 
-          <form action="" class="form-search d-flex align-items-stretch mb-3" data-aos="fade-up" data-aos-delay="200">
+          <form action="#dataqso" class="form-search d-flex align-items-stretch mb-3" data-aos="fade-up" data-aos-delay="200">
             <input type="text" class="form-control" style="text-transform: uppercase; font-size: 36px; font-weight: bold; color: blue" id="callsign" name="callsign" placeholder="your callsign">
-            <button type="button" class="btn btn-primary" id="btnSearch">Search</button>
+            <button type="submit" class="btn btn-primary" id="btnSearch">Search</button>
           </form>
 
           <div class="row gy-4" data-aos="fade-up" data-aos-delay="400">
@@ -171,7 +171,7 @@
 
     
     <!-- ======= Horizontal Pricing Section ======= -->
-    <section id="horizontal-pricing" class="horizontal-pricing pt-0">
+    <section id="dataqso" class="horizontal-pricing pt-0">
         <div class="container" data-aos="fade-up">
   
           <div class="section-header">
@@ -225,13 +225,14 @@
 
   <!-- ======= Footer ======= -->
 <footer id="footer" class="footer">
-    <div class="container">
-      <div class="row gy-4">
-        <div class="col-lg-5 col-md-12 footer-info">
-          <a href="index.html" class="logo d-flex align-items-center">
-            <span>YG1BSH</span>
+    <div class="container" style="text-align: center;">
+      <div class="row gy-4" style="text-align: center;">
+        <div class="col-lg-5 col-md-12 footer-info" >
+          <a href="index.html" class="logo align-items-center">
+            <span >YG1BSH</span>
           </a>
-          <p>Indonesian Amateur Radio.</p>
+          <!-- <p class="logo d-flex">YG1BSH</p> -->
+          <p>Indonesian Amateur Radio</p>
           <div class="social-links d-flex mt-4">
             <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
             <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
@@ -312,7 +313,7 @@
 
     // console.log('entered callsign: ', callsign);
 
-    const apiUrl = 'https://script.google.com/macros/s/AKfycbyxUxxHgtewhRCksmnclNAk98bKF90EnBNLMbthpFm3ezi-BtFrRq5iBNevSUrRmXKO/exec';
+    const apiUrl = 'https://script.google.com/macros/s/AKfycbydBsI-fdJyhGmqNmcvHyCnLbpllfqz10vAOobhCc5PgeLMr6tmkFrDNjZIA6c-0J14/exec';
     const btnSearch = document.getElementById('btnSearch');
     let judulKolom = [];
     let qsoData = [];
@@ -405,7 +406,7 @@
               success: function(data){
                 //alert(data);
                 qsoData = JSON.parse(JSON.stringify(data.records));
-                // console.log(qsoData);
+                // console.log('qsoData: ', qsoData);
                 if (qsoData.length > 0) {
                     judulKolom = setJudulKolom(qsoData);
                     // console.log('judulKolom: ', judulKolom);
@@ -506,7 +507,7 @@
         }
 
         generatePDFQSLCard = (data) => {
-          
+          // console.log('data for QSLCard: ', data);
           let thn = data.QSO_DATE.toString().substring(0,4);
           let bln = getMonthName(data.QSO_DATE.toString().substring(4,6));
           let tgl = data.QSO_DATE.toString().substring(6,8);
@@ -553,7 +554,8 @@
 
           doc.addImage(myimage, 'JPG', 0, 0, pageSize.width, pageSize.height); 
           
-          doc.setFont("Libre Franklin", "bold");
+          doc.setFont("helvetica", "bold");
+          // doc.setFontType("bold");
           // pdf.setFont("helvetica");
           // pdf.setFontType("bold");
           doc.setTextColor('red');
@@ -561,7 +563,8 @@
           doc.text(data.CALL, pageSize.width/2, 80, 'center');
 
           doc.setTextColor('blue');
-          doc.setFont("Libre Franklin Bold", "bold");
+          doc.setFont("helvetica", "bold");
+          // doc.setFontType("bold");
           doc.setFontSize(14);
           doc.text(tanggal, 31, brsQSOData, 'center');
           doc.text(waktu, 66, brsQSOData, 'center');
