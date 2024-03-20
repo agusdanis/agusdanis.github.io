@@ -1,36 +1,507 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-<!-- html2canvas library -->
-<!-- <script src="js/html2canvas.min.js"></script> -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <title>YG1BSH - Index</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
 
+  <!-- Favicons -->
+  <link href="assets/img/favicon1.png" rel="icon">
+  <link href="assets/img/yg1bsh.png" rel="apple-touch-icon">
 
-<!-- jsPDF library -->
-<!-- <script src="js/jsPDF/dist/jspdf.umd.js"></script> -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.js"></script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@700;900&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
 
-<script>
-    /* Place custom JavaScript code here */
-</script>
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Logis
+  * Updated: Aug 30 2023 with Bootstrap v5.3.1
+  * Template URL: https://bootstrapmade.com/logis-bootstrap-logistics-website-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+
+  <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.debug.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs/qrcode.min.js"></script> -->
+
+  <script>
+    
+    $(function() {
+        // $("#includeHeader").load("header.html");
+       $("#includeFooter").load("footer.html");
+    });
+ </script>
 </head>
+
 <body>
 
-<!-- Trigger button -->
-<button onclick="Convert_HTML_To_PDF();">Convert HTML to PDF</button>
 
-<!-- HTML content for PDF creation -->
-<div id="contentToPrint">
-    <h1>What is Lorem Ipsum?</h1>
-	
-    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-	
-    <img src="path/to/image.jpg">
 
-    <img src="path/to/image_2.jpeg">
-</div>
+  <div id="qrcode"></div>
+  
 
+  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+  <script src="qslcard.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.js"></script>
+
+  <script type="text/javascript">
+    const domain = document.location.origin;
+    const href = document.location.href;
+    const params = new URLSearchParams(document.location.search);
+    const id = params.get("token");
+    const atob_id = atob(id);
+    // console.log(document.location.href);
+    // console.log('token: ', atob_id);
+
+    // console.log('entered callsign: ', callsign);
+
+    // const apiUrl = 'https://script.google.com/macros/s/AKfycbzhrzuEosD7zJTwK5KXI-ioRG5rdVLK_yvkzqRdL1QK2DIVTDLujmLqg1C0atM9CNI/exec';
+    const btnSearch = document.getElementById('btnSearch');
+    let judulKolom = [];
+    let qsoData = [];
+    let callsignData = [];
+    let summaryData = {};
+    let dxcc = document.querySelector('#dataDXCC');
+    let qso = document.querySelector('#dataQSO');
+    let call = document.querySelector('#dataCallsign');
+    // let mode = document.querySelector('#dataMode');
+    // let band = document.querySelector('#dataBand');
+    
+    // console.log('dxcc: ', dxcc.dataset.purecounterEnd);
+    // dxcc.dataset.purecounterEnd = '200';
+    // let xdxcc = '300';
+    
+
+    // const o = params.get("o");
+    // console.info(s); //show C
+    // console.log('callsign: ', callsign);
+
+    // getQSOData('JR2IGV');
+    // console.log('callsign: ', callsign);
+    // callsign != null ? getQSOData(callsign) : '' ;
+
+    (atob_id.length > 5) ? verifyToken(atob_id) : '';
+
+    window.jsPDF = window.jspdf.jsPDF;
+    
+    function verifyToken(token) {
+        console.log('verifying token ....: ', token);
+        getQSOData(token);
+
+    }
+
+
+
+    // getSummaryData();
+    function getSummaryData() {
+            // const apiUrl    = 'https://script.google.com/macros/s/AKfycbyypbdXfKT34_tsl_cz5OyL5MQs4nvMH1kXXmFi8V0dyrYxPujIxqSIWt77wg3XQlXA/exec';
+            const action    = '?action=read';
+            const callsign  = '&callsign=summary'; 
+            $.ajax({
+              url : apiUrl+action+callsign,
+              
+              method : "GET",
+              success: function(data){
+                // console.log(JSON.parse(JSON.stringify(data)));
+                summaryData = JSON.parse(JSON.stringify(data.records[0]));
+                // console.log(summaryData);
+                // document.getElementById("dataDXCC").textContent = summaryData.DXCC;
+                dxcc.textContent  = summaryData.DXCC;
+                call.textContent  = summaryData.CALLSIGN;
+                qso.textContent  = summaryData.QSO;
+                // mode.textContent  = summaryData.MODE;
+                // band.textContent  = summaryData.BAND;
+                if (summaryData.length > 0) {
+                    // $('#dataDXCC').innerHTML = summaryData.DXCC;
+                    // document.getElementById("dataDXCC").textContent = summaryData.DXCC;
+                    // document.getElementById("dataDXCC").text = summaryData.DXCC;
+                    // dxcc.dataset.purecounterEnd = summaryData.DXCC;
+                    // 
+                    // judulKolom = setJudulKolom(qsoData);
+                    // console.log('judulKolom: ', judulKolom);
+                    // showAdifData(qsoData, judulKolom);
+                    // showSummaryData(qsoData);
+                }
+              },
+              error : function(request, status, error) {
+                console.log(error);
+              }
+            });
+        }
+
+    // getQSOData(callsign)
+    function getQSOData(token) {
+            // const apiUrl    = 'https://script.google.com/macros/s/AKfycbwY0umafNVZqRd9Py5dgJbxp20-V7DP9QMj5jd3-zffU8x9fvsZIEpbuMZCscGhQcXz/exec';
+            // document.getElementById('callsignData').innerHTML = '';
+            // document.getElementById('qsoDetail').innerHTML = '';
+            const action    = '?action=read';
+            const paramToken  = '&token='+token; 
+            // document.querySelector('#qsodataspan').textContent = call + ' QSO DATA';
+            // document.querySelector('#qsodatahead').textContent = call + ' QSO DATA';
+            $.ajax({
+              url : apiUrl+action+paramToken,
+              
+              method : "GET",
+            //   data : {edit_data: jsonData},
+                // data: function() {
+                //                 action = 'read';
+                                
+                // },
+              success: function(data){
+                //alert(data);
+                console.log('qsoData: ', data.records[1]);
+                console.log('header: ', data.records[0][0]);
+                qsoData = JSON.parse(JSON.stringify(data.records[1]));
+                callsignData = JSON.parse(JSON.stringify(data.records[0][0]));
+
+                // let btoa_id = btoa(data.ROW_ID);
+                var qrcode = new QRCode(`qrcode`, {
+                    text: `${href}`,
+                    width: 128,
+                    height: 128,
+                    colorDark : "#000000",
+                    colorLight : "#ffffff",
+                    correctLevel : QRCode.CorrectLevel.H
+                });
+                
+                // let html = `${callsignData[1]} ${callsignData[2]} - ${callsignData[3]}`;
+                // document.getElementById('callsignData').innerHTML = html;
+
+                // console.log('qsoData: ', qsoData);
+                // generatePDFQSLCard = (qsoData, callsignData);
+                generatePDFQSLCard(qsoData, callsignData);
+                if (qsoData.length > 0) {
+                    // judulKolom = setJudulKolom(qsoData);
+                    // console.log('judulKolom: ', judulKolom);
+                    // console.log('qsoData: ', qsoData);
+                    // showAdifData(qsoData, judulKolom);
+                    // document.querySelector('#qsodataspan').textContent = call + ' QSO DATA (' + qsoData.length + ')';
+                    // document.querySelector('#qsodatahead').textContent = call + ' QSO DATA (' + qsoData.length + ')';
+                    // showQSODetail(qsoData, callsignData);
+                    // generatePDFQSLCard(qsoData, callsignData);
+                } else {
+                  // document.getElementById('qsoDetail').innerHTML = 
+                  //   `<div class="col-lg-12 d-flex align-items-center justify-content-center">`+
+                  //     `<h2 style="color: red";><strong>Sorry, no QSO Data</strong></h2>`+
+                  //     `</div>`;
+                }
+              },
+              error : function(request, status, error) {
+                console.log(error);
+              }
+            });
+        }
+
+        setJudulKolom = (data) => {
+            let judul = [];
+            // console.log(data.length);
+            // console.log(Object.keys(data)); 
+
+            for (let x=0; x < data.length; x++) {
+                let temp = Object.keys(data[x]);
+                judul = judul.concat(temp);
+            }
+            // filter unique judul kolom
+            judul = judul.filter((item, pos) => judul.indexOf(item) === pos);
+            // console.log(judul);
+            return judul;
+        }
+
+        
+
+        function showQSODetail(data, callsign) {
+            // console.log('qsoData.length: ', qsoData.length);
+            // console.log('dataCallsign: ', callsign);
+            let delay = 100;
+            let html = '';
+            let featured, mt_4, warna_text ;
+            // html += `<p>${callsign[1]} ${callsign[2]} - ${callsign[3]}</p>`;
+            
+            html = '';
+            for (let i=0; i<data.length; i++) {
+                let thn = data[i].QSO_DATE.toString().substring(0,4);
+                let bln = getMonthName(data[i].QSO_DATE.toString().substring(4,6));
+                let tgl = data[i].QSO_DATE.toString().substring(6,8);
+
+                let jam = data[i].TIME_ON.toString().substring(0,2);
+                let mnt = data[i].TIME_ON.toString().substring(4,6);
+                // let rst = data[i].RST_SENT.toFixed(3);
+                let freq = data[i].FREQ.toFixed(3);
+
+                // console.log(tgl,'-',bln,'-', thn);
+                // console.log('oke ..');
+                mt_4 = (i == 0) ? '' : 'mt-4';
+                featured    = (i % 2 == 0) ? '' : 'featured';
+                warna_text  = (i % 2 == 0) ? 'black' : 'white';
+                html += 
+                    `<div class="row gy-4 pricing-item ${featured} ${mt_4}" data-aos="fade-up" data-aos-delay="${delay}">`+
+                        '<div class="col-lg-9 d-flex align-items-center justify-content-center">'+
+                            `<table width="100%" style="color: ${warna_text};">`+
+                                '<thead style="text-align: center; ">'+
+                                    `<th>DATE</th>`+
+                                    '<th>TIME (UTC)</th>'+
+                                    '<th>MODE</th>'+
+                                    '<th>BAND</th>'+
+                                    '<th>FREQ</th>'+
+                                    '<th>RST</th>'+
+                                    // '<th hidden>qrCode</th>'+
+                                '</thead>'+
+                                '<tbody style="text-align: center">'+
+                                    `<td>${tgl} ${bln} ${thn}</td>`+
+                                    `<td>${jam}:${mnt}</td>`+
+                                    `<td>${data[i].MODE}</td>`+
+                                    `<td>${data[i].BAND}</td>`+
+                                    `<td>${freq}</td>`+
+                                    `<td>${data[i].RST_SENT}<div hidden id="qrcode${data[i].ROW_ID}"></div></td>`+
+                                    // `<td hidden><div id="qrcode${data[i].ROW_ID}"></div></td>`+
+                                '</tbody>'+
+                            '</table>'+
+                        '</div>'+
+                        '<div class="col-lg-3 d-flex align-items-center justify-content-center">'+
+                            // '<div class="text-center"><a href="#" class="buy-btn">QSL Card</a></div>'+
+                            `<button type="button" data-id="${data[i].ROW_ID}" onclick="downloadQSL(this)" class="btn buy-btn text-center">QSL Card</button>`+
+                        '</div>'+
+                    '</div>';
+                delay += 100;
+            }
+            document.getElementById('qsoDetail').innerHTML = html;
+
+            for (let i=0; i<data.length; i++) {
+              let btoa_id = btoa(data[i].ROW_ID);
+              var qrcode = new QRCode(`qrcode${data[i].ROW_ID}`, {
+                  text: `${domain}/qslcard.html?id=${btoa_id}`,
+                  width: 128,
+                  height: 128,
+                  colorDark : "#000000",
+                  colorLight : "#ffffff",
+                  correctLevel : QRCode.CorrectLevel.H
+              });
+            }
+
+            // var qrcode = new QRCode("qrcode", {
+            //     text: "###REPLACE MEEEE###",
+            //     width: 128,
+            //     height: 128,
+            //     colorDark : "#000000",
+            //     colorLight : "#ffffff",
+            //     correctLevel : QRCode.CorrectLevel.H
+            // });
+        }
+
+        downloadQSL = (e) => {
+          let row_id = $(e).attr('data-id');
+          const data = qsoData.filter(d => d.ROW_ID === row_id)[0] ;
+          // console.log('donwload request: ', row_id, ':', data);
+          // const urlPDF = "https://docs.google.com/presentation/d/1xugcSzl5oiHD4Ih9FUKH9J2duDINGw3jPB8q1NnybHc/export?format=pdf&portrait=false&size=b5&gridlines=false&slide=id.p1";
+          // window.location = urlPDF;
+          // window.open(urlPDF);
+          generatePDFQSLCard(data, callsignData);
+          // Convert_HTML_To_PDF();
+          
+        }
+
+        generatePDFQSLCard = (data, calldata) => {
+
+          // document.getElementById('qrcode').innerHTML = '';
+
+          // console.log('data for QSLCard: ', data);
+          let thn = data.QSO_DATE.toString().substring(0,4);
+          let bln = getMonthName(data.QSO_DATE.toString().substring(4,6));
+          let tgl = data.QSO_DATE.toString().substring(6,8);
+          let tanggal = tgl+' '+bln+' '+thn;
+
+          let jam   = data.TIME_ON.toString().substring(0,2);
+          let mnt   = data.TIME_ON.toString().substring(4,6);
+          let waktu = jam+':'+mnt;
+          let freq  = data.FREQ.toFixed(3);
+          let band  = data.BAND;
+          let mode  = data.MODE;
+          let rst   = (data.RST_SENT).toString();
+          let calldata1 = calldata[1] != null ? calldata[1] : '';
+          let calldata2 = calldata[2] != null ? calldata[2] + ' - ' : '';
+          let calldata3 = calldata[3] != null ? calldata[3] : ''; 
+
+          var fileName = 'qslcard.pdf';
+          var brsCallsign = 80;
+          var brsQSOData  = 116;
+
+          var doc = new jsPDF(
+            {
+              orientation: 'l',
+              unit: 'mm',
+              format: 'a5',
+              putOnlyUsedFonts:true
+            }
+          );
+          const qslcardTemplate = "assets/img/QSLCard Template-1.png";
+          // const myimage = "https://drive.google.com/file/d/1EAxABicHo5y5kQhl23twlnDOqq5TjzVO/view?usp=sharing";
+
+          // doc.internal.events.subscribe('addPage', function() { 
+          //   pageSize = view.doc.internal.pageSize; 
+            
+          // });
+
+          var pageSize = doc.internal.pageSize; 
+
+          // doc.setFont("libre", "bold");
+          // doc.text(20, 20, 'Hello world!');
+          // doc.text(20, 30, 'This is client-side Javascript to generate a PDF.');
+          // doc.addImage(myimage, "JPEG", 0, 0, 180, 180);
+
+          // Add new page
+          // doc.addPage();
+          // doc.text(20, 20, 'Visit CodexWorld.com');
+
+          // add Background Image (QSL Card Template)
+          doc.addImage(qslcardTemplate, 'JPG', 0, 0, pageSize.width, pageSize.height); 
+
+          // 
+          // add QRCode Image
+          // var qrcode = new QRCode("qrcode", {
+          //     text: "###REPLACE MEEEE###",
+          //     width: 128,
+          //     height: 128,
+          //     colorDark : "#000000",
+          //     colorLight : "#ffffff",
+          //     correctLevel : QRCode.CorrectLevel.H
+          // });
+
+          // doc.setDrawColor(255,255,255);  // line color (white)
+          // doc.setFillColor(255,255,255);  // fill color (white)
+          // doc.rect(pageSize.width-27,pageSize.height-25,21,21, 'F');
+          // doc.setDrawColor(255,0,0);
+
+          // let base64Image = $('#qrcode img').attr('src');
+          // var base64Image = $(`#qrcode`).find('img').prop("src");
+
+          // console.log('base64Image: ', base64Image);
+
+          // var qrcodeImg = new Image();
+          // qrcodeImg.src = base64Image; //'https://www.myserver.com/somepath/myImage.png';.
+          // qrcodeImg.onload = function(){
+            // doc.addImage(base64Image , 'png', pageSize.width-25, pageSize.height-23, 17, 17);  // src, left, top, width, height
+          // }
+
+          // doc.addImage(base64Image, 'png', 100, 100, 40, 40);
+          // console.log(doc.getFontList());
+          
+          // doc.addImage(base64Image , 'png', pageSize.width-25, pageSize.height-23, 17, 17);  // src, left, top, width, height
+          doc.setFont("Helvetica", "Bold");
+          // doc.setFontStyle("bold");
+          // doc.setFont("helvetica");
+          // doc.setFontType("bold");
+          // // pdf.setFont("helvetica");
+          // pdf.setFontType("bold");
+          console.log('data for QSLCard: ', data);
+          // doc.rect(20,20,10,10);
+          doc.setTextColor('red');
+          doc.setFontSize(48);
+          doc.text(data.CALL, pageSize.width/2, 80, 'center');
+          console.log('call: ', calldata);
+
+          doc.setTextColor('blue');
+          doc.setFont("helvetica", "bold");
+          // doc.setFontType("bold");
+          doc.setFontSize(24);
+          doc.text(calldata1+' '+calldata2, pageSize.width/2, 90, 'center');
+
+          doc.setFontSize(14);
+          doc.text(tanggal, 31, brsQSOData, 'center');
+          doc.text(waktu, 66, brsQSOData, 'center');
+          doc.text(band, 103, brsQSOData, 'center');
+          doc.text(freq, 128, brsQSOData, 'center');
+          doc.text(mode, 156, brsQSOData, 'center');
+          doc.text(rst, 185, brsQSOData, 'center');
+
+
+
+          // window.open(doc.output('bloburl', fileName));
+          window.location = doc.output('bloburl', fileName);
+
+            // console.log('pdf done');
+        // }
+          // Save the PDF
+          // doc.save('document.pdf');
+          // doc.output('pdfjsnewwindow', 'document.pdf');
+          // window.open(doc.output('bloburl'));
+        }
+        
+
+        // Convert HTML content to PDF
+        function Convert_HTML_To_PDF() {
+            var doc = new jsPDF();
+          
+            // Source HTMLElement or a string containing HTML.
+            var elementHTML = document.querySelector("#contentToPrint");
+
+            doc.html(elementHTML, {
+                callback: function(doc) {
+                    // Save the PDF
+                    doc.save('document-html.pdf');
+                },
+                margin: [10, 10, 10, 10],
+                autoPaging: 'text',
+                x: 0,
+                y: 0,
+                width: 190, //target width in the PDF document
+                windowWidth: 675 //window width in CSS pixels
+            });
+        }
+
+        function getMonthName(monthNumber) {
+          const date = new Date();
+          date.setMonth(monthNumber - 1);
+
+          return date.toLocaleString('en-US', {
+              month: 'short',
+          });
+        }
+
+        // console.log(getMonthName(1)); // 👉️ "January"
+
+        $(document).ready(function() {
+            // showQSODetail();
+            // console.log('qsoData.length: ', qsoData.length);
+            // console.log('qsoData: ', qsoData);
+
+            
+        })
+  </script>
 
 </body>
+
 </html>
